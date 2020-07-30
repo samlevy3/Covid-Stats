@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <style>
+      #responseField {
+	  font-size: 30px;
+	  color: white;
+	  margin: auto;
+	  float: left;
+	  margin-top: 30px;
+	  width: 300px;
+	  height: 300px;
+	  background-color: black;
+	  overflow: auto;
+      }
+      #graph {
+	  margin-left: 30px;
+	  margin-top: 30px;
+	  float: left;
+	  width: 300px;
+	  max-width: 300px;
+	  max-height: 300px;
+	  height: 300px;
+	  background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Dropdown</a>
+        <div class="dropdown-content">
+          <a href="../WeatherServer/fancy.html">Weather Server</a>
+          <a href="index.html">Covid Server</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascropt:void(0)" class="dropbtn">Reflections</a>
+        <div class="dropdown-content">
+          <a href="reflections.html">Honors 100</a>
+        </div>
+      </li>
+    </ul>
+    <h1>Welcome to the COVID-19 Tracking App</h1>
+    <form>
+      <input type="text" id="input" value="">
+      <input type="submit" id="submit" value="Submit">
+    </form>
+    <div id="responseField">
+    </div>
+    <div id="graph">
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>

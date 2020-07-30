@@ -1,0 +1,31 @@
+
+
+const submit = document.querySelector('#submit');
+const input = document.querySelector('#input');
+const responseField = document.querySelector('#responseField');
+
+async function processData() {
+    const response = await fetch('CovidData/covid-data.json')
+    let jsonResponse = await response.json();
+    let county = input.value;
+    if (response.ok) {
+	renderResponse(jsonResponse, county);
+    } else {
+	renderError(response.status);
+    }
+}
+
+function renderResponse(response, county) {
+    let c = response[county];
+    responseField.innerHTML = `<p>County: ${county}<br>Week: ${response[county].week}<br>Cases: ${response[county].cases}`;
+}
+
+function renderError(error) {
+    responseField.innerHTML = "<p>Error: ${error}<p>";
+}
+const displayData = event => {
+    event.preventDefault();
+    processData();
+}
+
+submit.addEventListener('click', displayData);

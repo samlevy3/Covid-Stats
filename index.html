@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../index.css">
+    <script type="module" src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+      * {
+          margin: 0;
+          border: 0;
+          padding: 0;
+      }
+      h2 {
+	  text-align: center;
+	  margin: 20px;
+      }
+      #graph {
+	  width: 50%;
+	  height: 30%;
+	  position: relative;
+	  text-align: center;
+	  margin: auto;
+	  margin-top: 10px;
+      }
+      #form {
+	  position: relative;
+	  margin: auto;
+	  top: 50%;
+	  width: 20%;
+	  height: 20%;
+      }
+      #input {
+	  border: 1px solid black;
+	  border-radius: 5px;
+	  padding: 10px;
+      }
+      #submit {
+	  border: 1px solid black;
+	  border-radius: 5px;
+	  padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn">Projects</a>
+        <div class="dropdown-content">
+          <a href="../WeatherServer/fancy.html">Weather Server</a>
+          <a href="index.html">Covid Server</a>
+        </div>
+      </li>
+      <li class="dropdown">
+        <a href="javascropt:void(0)" class="dropbtn">Reflections</a>
+        <div class="dropdown-content">
+          <a href="../reflections.html">Honors 100</a>
+        </div>
+      </li>
+    </ul>
+    <h1>Welcome to the Washington Counties COVID-19 Tracking Site</h1>    
+    <h2>Please Enter a Washington County to see recent cases of COVID-19</h2>
+    <form id="form">
+      <input type="text" id="input" value="">
+      <input type="submit" id="submit" value="Submit">
+    </form>
+    <div id="graph">
+
+    </div>
+    <script src="./bundle.js"></script>
+  </body>
+</html>
