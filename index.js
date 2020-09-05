@@ -3,32 +3,40 @@ const submit = document.querySelector('#submit');
 const input = document.querySelector('#input');
 const responseField = document.querySelector('#responseField');
 const plot = document.querySelector('#graph');
+const axios = require('axios');
 
 async function processData() {
-    const response = await fetch('CovidData/covid-data.json')
-    let jsonResponse = await response.json();
-    let county = input.value;
-    if (response.ok) {
-	renderResponse(jsonResponse, county);
-    } else {
-	renderError(response.status);
+    try {	
+		const response = await axios.get('api/countyData', {
+			headers: { "name": input.value }
+		});
+		if (response.status === 200) {
+			renderResponse(response.data, input.value);
+		} else {
+			renderError(response.status);
+		}
+    } catch (err) {
+		renderError(err);
     }
 }
 
 function renderResponse(response, county) {
-    if (response.hasOwnProperty(county)) {	
-	let c = response[county];
-	Plotly.plot(plot, [{
-	    x: c.week,
-	    y: c.cases}], { 
-		margin: { t: 0 } }, {showSendToCloud:true} );
-    } else {
-	renderError("Invalid county");
-    }
+    try {	
+		if (response && county) {	
+			Plotly.plot(plot, [{
+			x: response.weeks,
+			y: response.cases, name: county}], { 
+				margin: { t: 0 }, showlegend: true}, {displayModeBar: false});
+		} else {
+			renderError("Invalid county");
+		}
+    } catch (err) {
+		renderError(err);
+	}
 }
 
 function renderError(error) {
-    responseField.innerHTML = `<p>Error: ${error}<p>`;
+    alert(`Error: ${error}`);
 }
 const displayData = event => {
     event.preventDefault();
