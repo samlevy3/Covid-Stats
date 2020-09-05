@@ -20,7 +20,7 @@ mongoose.connection.on('error', err => {
 	console.log('Mongoose Default Connection Error : ' + err);
 });
 
-// Get new data every week
+// Get new data every week (Data updated Sunday afternoon)
 const oldDateObj = lastUpdatedModel.findOne({"name": "update-check"}).then((res) => {
 	const oldDate = res.date;
 	const currDate = new Date();
