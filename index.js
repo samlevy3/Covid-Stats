@@ -1,4 +1,3 @@
-const Plotly = require('plotly.js-dist');
 const submit = document.querySelector('#submit');
 const input = document.querySelector('#input');
 const responseField = document.querySelector('#responseField');
@@ -22,11 +21,23 @@ async function processData() {
 
 function renderResponse(response, county) {
     try {	
-		if (response && county) {	
-			Plotly.plot(plot, [{
-			x: response.weeks,
-			y: response.cases, name: county}], { 
-				margin: { t: 0 }, showlegend: true}, {displayModeBar: false});
+		if (response && county) {
+			const data = [{
+				x: response.weeks,
+				y: response.cases, 
+				name: county
+			}]
+			Plotly.plot(plot, data, { 
+				title: {
+					text:'New Weekly Covid Cases',
+					font: {
+					  family: "Optima",
+					  size: 24
+					},
+					xref: 'paper',
+					x: 0.05,
+				  },
+				margin: { t: 40 }, showlegend: true}, {displayModeBar: false});
 		} else {
 			renderError("Invalid county");
 		}
@@ -39,7 +50,7 @@ function renderError(error) {
     alert(`Error: ${error}`);
 }
 const displayData = event => {
-    event.preventDefault();
+	event.preventDefault();
     processData();
 }
 
